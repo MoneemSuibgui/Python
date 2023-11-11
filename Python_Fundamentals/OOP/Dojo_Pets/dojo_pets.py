@@ -12,23 +12,27 @@ class Pet:
 
 
 # increases the pets energy by 25
+# sleep method
     def sleep(self):
         self.energy += 25
         return self
 
 # increases the pet's energy by 5 & health by 10
+# eat method
     def eat(self):
         self.energy += 5
         self.health += 10
         return self
 
 #  increases the pet's health by 5
+#  play method
     def play(self):
         self.health += 5
         self.energy -= 15
         return self
 
 # prints out the pet's sound
+# make noise method
     def noise(self):
         print(self.noise)
 
@@ -63,6 +67,7 @@ class Ninja:
 #  cleans the ninja's pet invoking the pet noise() method
     def bathe(self):
         self.pet.noise()
+
 
 my_treats = ['Snausage','Bacon',"Trash Bag"]
 my_pet_food = ['Pizza','Burger']
