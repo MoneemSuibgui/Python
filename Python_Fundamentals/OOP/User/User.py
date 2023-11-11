@@ -1,20 +1,18 @@
-
-
 class User:
     
     def __init__(self, name):
         self.name = name
         self.amount = 0
 
-# make withdraw
+# make withdraw method
     def make_withdrawl(self,amount):
         self.amount -= amount
 
-# make deposit
+# make deposit method
     def make_deposit(self, amount):
         self.amount += amount
 
-# display user account
+# display_user_balance method
     def display_user_balance(self):
         print("User: {}, Balance:{} ".format(self.name, self.amount))
 
