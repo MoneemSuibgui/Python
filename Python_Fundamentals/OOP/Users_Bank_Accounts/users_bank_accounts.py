@@ -1,8 +1,4 @@
-
-
-
 class BankAccount:
-    
     
     all_accounts = []
     def __init__(self,int_rate,balance):
@@ -43,8 +39,6 @@ class BankAccount:
 
 
 class User:
-
-
     def __init__(self, name):
         self.name = name
         self.account = {
@@ -69,7 +63,7 @@ class User:
 
 
 
-
+# instantiate User Object
 Moneem = User("Moneem")
 
 Moneem.account['checking'].deposit(700).deposit(500).withdraw(200)
