@@ -19,7 +19,8 @@ class MathDojo:
     
 
 
-# create instance from Math class
+# creating new instance from MathDojo class
 testMath=MathDojo()
+# Practice chaining methods
 testMath=(testMath.add(5,5).sub(5,5).add(7.5).sub(3.5)).result
 print("the result is : ",testMath)
