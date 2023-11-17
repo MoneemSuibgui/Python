@@ -1,0 +1,4 @@
+SELECT * FROM names;
+
+INSERT INTO names (name)
+VALUES ("Moneem"), ("Kamel");
