@@ -25,6 +25,12 @@ ORDER BY first_name DESC;
 
 
 ################################################
+*****Assignment: Users
+*********
+Objectives:
+Practice using MySQL workbench to run sql commands to manipulate our database
+*********
+
 Forward engineer the users_schema you created in the previous chapter
 
 Create a .txt file where you'll save each of the queries you'll run in the workbench
