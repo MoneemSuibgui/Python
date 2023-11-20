@@ -1,0 +1,56 @@
+INSERT INTO dojos (name)
+VALUES ("Chicago"), ("Seattle"),("Online");
+
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM dojos;
+
+INSERT INTO ninjas (first_name,last_name,age,dojo_id)
+VALUES ("Adrien","Dion",25,1),("Anne","Jurack",34,1),("Ryan","Magley",30,1);
+
+INSERT INTO ninjas (first_name,last_name,age,dojo_id)
+VALUES ("Marisa","Goode",37,2),("Todd","Enders",36,2),("Sadie","Flick",29,2);
+
+INSERT INTO ninjas (first_name,last_name,age,dojo_id)
+VALUES ("Suibgui","Moneem",28,3),("Hosni","Suibgui",55,3),("Mitch","Golden",26,3);
+
+SELECT * FROM dojos
+LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id
+WHERE dojos.id = 1;
+
+SELECT * FROM dojos
+LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id
+	WHERE dojos.id = (SELECT id FROM dojos ORDER BY id DESC LIMIT 1);
+    
+SELECT * FROM dojos
+WHERE dojos.id = (SELECT dojo_id FROM ninjas ORDER BY dojo_id DESC LIMIT 1);
+
+
+-------------------------------------------------------
+Assignment: Dojos and Ninjas
+Objectives:
+Practice using MySQL workbench to run SQL commands to manipulate our database
+Practice one-to-many relationships
+Forward engineer the dojos_and_ninjas_schema from the previous chapter
+
+Create a .txt file where you'll save each of your queries from below
+
+Query: Create 3 new dojos
+
+Query: Delete the 3 dojos you just created
+
+Query: Create 3 more dojos
+
+Query: Create 3 ninjas that belong to the first dojo
+
+Query: Create 3 ninjas that belong to the second dojo
+
+Query: Create 3 ninjas that belong to the third dojo
+
+Query: Retrieve all the ninjas from the first dojo
+
+Query: Retrieve all the ninjas from the last dojo
+
+Query: Retrieve the last ninja's dojo
+--------------------------------------------------------
+
+Submit your .txt file that contains all the queries you ran in the shell
