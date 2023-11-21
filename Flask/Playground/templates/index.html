@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .wrapper{
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+    </style>
+    <title>Playground</title>
+</head>
+<body>
+    {% comment %} NINJA BONUS: Use only one template for the whole project {% endcomment %}
+    <div class="wrapper">
+        {% for i in range(0,num) %}
+        <div class="box" style="background-color: {{color}};"></div>
+        {% endfor %}
+    </div>
+</body>
+</html>
