@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>Create</title>
+</head>
+<body>
+    <div class="container m-4p-3 bg-info-subtle text-dark" >
+        <div  class=" p-3 " >
+        <a href="/users" class="btn btn-success btn-lg mx-2">Home</a>
+        <h1 class="text-center" >Edit User :#{{one_user.id}} </h1>
+        </div>
+        <div class="text-center" >
+            
+                <h5>Full Name : {{one_user.full_name()}}</h5>
+                <br>
+                <h5>Email : {{one_user.email}}</h5>
+                <br>
+                <h5>Create On : {{one_user.created_at}}</h5>
+                <br>
+                <h5>Last update : {{one_user.updated_at}}</h5>
+            
+        </div>
+        <a href="/users/edit/{{one_user.id}}" class="btn btn-secondary btn-lg mx-2 mb-3">Edit</a>
+        <a href="/users/destroy/{{one_user.id}}" class="btn btn-danger btn-lg mx-2 mb-3">Delete</a>
+    </div>
+</body>
+</html>
