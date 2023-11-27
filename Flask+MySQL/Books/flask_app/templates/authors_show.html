@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Show</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5 bg-warning">
+    <div class="row p-4 bg-sucess ">
+        <div class="d-flex justify-content-between mb-5 p-5">
+            <a href="/authors"><button class="btn btn-success btn-lg ">Authors</button></a>
+            <a href="/books"><button class="btn btn-primary btn-lg">Books</button></a>
+        </div>
+            <div class="col-6  bg-info mx-5 mb-5">
+                <br>
+                <h3><span class="text-danger">{{author.name}}</span> Favourites :</h3>
+                <table class="table table-bordered table-hover ">
+                    <thead>
+                        <tr class="bg-dark text-light">
+                            <th>Title</th>
+                            <th>Nbr Of Pages</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for one_book in favourite_books %}
+                            <tr>
+                                <td><b>{{one_book.title}}</b></td>
+                                <td><b>{{one_book.num_of_page}}</b></td>
+                            </tr>
+                        {%endfor %}
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4 ">
+                <h3>Add Author's Favorite</h3>
+                <form action="/create/favourite/book" method="post">
+                    <input type="hidden" name="author_id" value="{{author.id}}">
+                    <label class="form-label my-2" for="name">Book :</label>
+                    <select class="form-select" name="book_id" >
+                        {%for book in unfavourite_books %}
+                            <option value="{{book.id}}">{{book.title}}</option>
+                        {%endfor%}
+                    </select>
+                        <button type="submit" class="btn-lg btn btn-primary mt-2">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
