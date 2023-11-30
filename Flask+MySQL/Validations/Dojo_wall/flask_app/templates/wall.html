@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>Wall One</title>
+</head>
+<body>
+    <div class="d-flex justify-content-between p-3">
+        <h1>CodingDojo Wall</h1>
+        <div class="d-flex justify-content-evenly">
+            <h2 class="mx-5">Welcome, <span class="text-success">{{logged_in_user.full_name().upper()}}</span></h2>
+            <a href="/logout" class="mx-5 btn btn-danger btn-lg">Log Out</a>
+        </div>
+    </div>
+    <hr>
+    <div class="container mt-4 ">
+        <div class="row p-4" >
+            <div class="col-5 bg-dark text-light mx-4 p-3">
+                <h4><ins><strong class="text-danger mx-2"> {{nbr_msg_logged_user}} </strong> Messages(s) for You : </ins></h4>
+                <hr class="text-warning mt-4 mb-4">
+                {%for one_message in all_messages %}
+                    <div class="card bg-info text light p-3 mt-2">
+                        <h2> {{one_message.first_name}} {{one_message.last_name}} said():</h2>
+                        <h4>"{{one_message.content}}"</h4>
+                    </div>
+                    <a href="/delete/message/{{one_message.id}}" class=" btn btn-danger btn-lg mx-2 mt-2 mb-3">Delete</a>
+                {%endfor%}
+                
+            </div>
+            <div class="col-5 bg-dark text-light mx-4 p-3">
+                <h3><ins>Send Messages :</ins></h3>
+                <h5 class="text-success m-3">You have sent {{nbr_of_massages}} messages so far</h5>
+                <hr class="text-warning mt-4">
+                {%with messages=get_flashed_messages(category_filter=["warning_msg"])%}
+                    {%if messages%}
+                        {%for msg in messages%}
+                            <p class="alert alert-danger ">{{msg}}</p>
+                        {%endfor%}
+                    {%endif%}
+                {%endwith%}
+                {% for user in users %}
+                {%if user.id != logged_in_user.id %}
+                <div class="card mb-3 p-2 bg-warning">
+                <form action="/create/message" method="post">
+                        <div class="form-group">
+                            <input type="hidden" name="reciver_id" value="{{user.id}}">
+                            <label for="content"><h4>{{user.first_name}} {{user.last_name}}</h4></label>
+                            <textarea name="content"  cols="30" rows="3" class="form-control mt-1 mb-2"></textarea>
+                            
+                        </div>
+                        <input type="submit" value="Send Message" class="btn btn-primary m-2 btn-lg">
+                    </form>
+                </div>
+                {%endif%}
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
