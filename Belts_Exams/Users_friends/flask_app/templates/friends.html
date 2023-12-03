@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>Friends</title>
+</head>
+<body>
+    <div class="d-flex justify-content-between p-4">
+        <h1>Hello <span class="text-success">{{logged_in_user.name}}</span></h1>
+        <a href="/logout" class="btn btn-danger btn-lg">Logout</a>
+    </div> 
+    <div class="container mt-4">
+        <h3>Here is the list of your friends</h3>
+        <table class="table table-hover table-bordered" >
+            <tr class="bg-primary text-center">
+                <th>Alias</th>
+                <th>Action</th>
+            </tr>
+            {%for friend in all_friends %}
+                <tr class="text-center">
+                    <td>{{friend.alias}}</td>
+                    <td>
+                        <a href="/user/{{friend.id}}" class="mx-4">View Profile</a>
+                        <a href="/delete/friend/{{friend.id}}">Remove as Friend</a>
+                    </td>
+                </tr>
+            {%endfor%}
+        </table>
+        <div class="mt-5">
+            <h3>Other Users not on your friend's list :</h3>
+            <table class="table table-stripped">
+                <tr class="bg-dark text-light text-center">
+                    <th>Alias</th>
+                    <th>actions</th>
+                </tr>
+                {%for user in unfriends_list%}
+                    {%if user.id != logged_in_user.id%}
+                    <tr class="text-center">
+                        <th>
+                            <a href="/user/{{user.id}}">{{user.alias}}</a>
+                        </th>
+                        <th>
+                            <a href="/create/friend/{{user.id}}" class="btn btn-primary">Add as Friend</a>
+                        </th>
+                    </tr>
+                    {%endif%}
+                {%endfor%}
+            </table>
+        </div>
+    </div>
+</body>
+</html>
