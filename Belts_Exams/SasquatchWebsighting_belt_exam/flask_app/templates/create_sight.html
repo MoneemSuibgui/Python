@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Sasquatch Websightings</title>
+</head>
+<body>
+    <div class="d-flex justify-content-between m-5">
+        <h1>Sasquatch Websighting</h1>
+        <h1 class="text-danger">{{logged_in_user.full_name()}}</h1>
+    </div>
+    <div class="container p-3">
+        
+        <div class="d-flex justify-content-between ">
+            <h1>Report a sighting</h1>
+            <div class="p-3">
+            <a href="/dashboard" class="px-4 btn btn-success btn-lg">Dashboard</a>
+            <a href="/logout" class="btn btn-danger btn-lg">Logout</a>
+            </div>
+        </div>
+        <div class="card border border-dark   m-3 p-4">
+            <form action="/create/sight" method="post">
+                {% with messages=get_flashed_messages(category_filter=['sight']) %}
+                        {%if messages%}
+                            {% for msg in messages %}
+                                <p class="text-danger">{{msg}}</p>
+                            {% endfor %}
+                        {% endif %}
+                {% endwith %}
+            <div class="form-group mt-4">
+                <label for="location">Location :</label>
+                <input type="text" name="location" class="form-control mt-2">
+            </div>
+            <div class="form-group mt-3">
+                <label for="content">What Happened :</label>
+                <textarea name="content" cols="50" rows="3" class="form-control mt-2"></textarea>
+            </div>
+            <div class="form-group mt-3">
+                <label for="date_sight">Date of Sitinig :</label>
+                <input type="date" name="date_sight" >
+            </div>
+            <div class="from-group mt-3">
+                <label for="number_s" ># of Sasquatches</label>
+                <input type="number" name="number_s" >
+            </div>
+            <input type="submit" value="Report" class="btn btn-primary btn btn-lg mt-3">
+        </form>
+        </div>
+        
+        
+    </div>
+</body>
+</html>
