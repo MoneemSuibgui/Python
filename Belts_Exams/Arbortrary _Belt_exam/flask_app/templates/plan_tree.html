@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Arbotrary</title>
+</head>
+<body>
+    <div class="container p-3 mt-4">
+        <div class="d-flex justify-content-between">
+            <div>
+                <h1>Arbotrary</h1>
+            </div>
+            
+            <div class="d-flex justify-content-between mb-3">
+                <a href="/user/account" class="mx-4 btn btn-info btn-lg">My trees</a>
+                <h3>{{user.full_name()}}</h3>
+            </div>
+            
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+            <h4>A site to track randomly planted trees</h4>
+            <div>
+                <a href="/dashboard" class="btn btn-success btn-lg mx-2">Dashboard</a>
+                <a href="/logout" class="btn btn-danger btn-lg">Logout</a>
+            </div>
+        </div>
+        <div class=" p-4 mt-4 w-50 mx-5">
+            <form action="/plant/tree" method="post">
+                {%with messages=get_flashed_messages(category_filter=['tree'])%}
+                    {%if messages%}
+                        {%for msg in messages%}
+                            <p class="alert alert-danger">{{msg}}</p>
+                        {%endfor%}
+                    {%endif%}
+                {% endwith %}
+            <h2 class="mb-3">Arbitrarily Plant a Tree</h2>
+            <div class="form-group mt-2">
+                <label for="spicies">Species :</label>
+                <input type="text" name="spicies" class="form-control">
+            </div>
+            <div class="form-group mt-2">
+                <label for="location">Location :</label>
+                <input type="text" name="location" class="form-control ">
+            </div>
+            <div class="form-group mt-2">
+                <label for="reason">Reason :</label>
+                <input type="text" name="reason" class="form-control ">
+            </div>
+            <div class="form-group mt-2">
+                <label for="date_planted">Date planted :</label>
+                <input type="date" name="date_planted" class="form-control">
+            </div>
+            
+            <input type="submit" value="Plant" class="btn btn-primary  btn-lg mt-4">
+            </form>
+        </div>
+
+        
+    </div>
+</body>
+</html>
